@@ -82,21 +82,15 @@ export default function App() {
           )}
 
           <Wheel
+            canSpin={wheel.canSpin}
             isSpinning={wheel.isSpinning}
+            onSpin={wheel.spinWheel}
             options={wheel.options}
             rotationAngle={wheel.rotationAngle}
             rotationTransitionMs={wheel.rotationTransitionMs}
           />
 
           <div className="flex flex-wrap justify-center gap-3">
-            <button
-              className="min-h-12 rounded-full bg-[var(--accent)] px-8 py-3 text-base font-black text-black shadow-[var(--shadow-card)] disabled:cursor-not-allowed disabled:opacity-45"
-              disabled={!wheel.canSpin}
-              onClick={wheel.spinWheel}
-              type="button"
-            >
-              {wheel.isSpinning ? 'Spinning...' : 'Spin wheel'}
-            </button>
             <button
               className="min-h-12 rounded-full bg-[var(--accent)] px-8 py-3 text-base font-black text-black shadow-[var(--shadow-card)] disabled:cursor-not-allowed disabled:opacity-45"
               disabled={wheel.isSpinning}
@@ -107,11 +101,13 @@ export default function App() {
             </button>
           </div>
 
-          <SpinResult
-            isSpinning={wheel.isSpinning}
-            optionCount={wheel.options.length}
-            selectedOption={wheel.selectedOption}
-          />
+          <div className="flex min-h-[7.5rem] w-full items-center justify-center">
+            <SpinResult
+              isSpinning={wheel.isSpinning}
+              optionCount={wheel.options.length}
+              selectedOption={wheel.selectedOption}
+            />
+          </div>
         </section>
       </div>
     </Shell>

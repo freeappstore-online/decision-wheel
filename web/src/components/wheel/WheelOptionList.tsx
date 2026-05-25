@@ -34,7 +34,7 @@ export function WheelOptionList({
         </Button>
       </div>
 
-      <div className="mt-4 flex max-h-80 flex-col gap-2 overflow-y-auto pr-1">
+      <div className="visible-scrollbar mt-4 flex max-h-80 flex-col gap-2 overflow-y-auto pr-2">
         {options.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--glass-soft)] px-3 py-4 text-sm text-[var(--muted)]">
             Add at least two options to spin the wheel.

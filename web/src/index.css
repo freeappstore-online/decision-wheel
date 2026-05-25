@@ -175,6 +175,24 @@ input, textarea, [contenteditable] {
   height: 0;
 }
 
+.visible-scrollbar {
+  scrollbar-color: color-mix(in srgb, var(--muted) 45%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+.visible-scrollbar::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+.visible-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 42%, transparent);
+}
+
+.visible-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 button,
 a {
   transition:

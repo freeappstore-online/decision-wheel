@@ -6,6 +6,8 @@ interface WheelProps {
   rotationAngle: number
   rotationTransitionMs: number
   isSpinning: boolean
+  canSpin: boolean
+  onSpin: () => void
 }
 
 export function Wheel({
@@ -13,6 +15,8 @@ export function Wheel({
   rotationAngle,
   rotationTransitionMs,
   isSpinning,
+  canSpin,
+  onSpin,
 }: WheelProps) {
   const segmentAngle = options.length > 0 ? 360 / options.length : 0
 
@@ -66,11 +70,17 @@ export function Wheel({
             </div>
           )
         })}
-
-        <div className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--glass-strong)] text-sm font-black text-[var(--ink)] shadow-[var(--shadow-card)]">
-          {isSpinning ? '...' : 'SPIN'}
-        </div>
       </div>
+
+      <button
+        aria-label={isSpinning ? 'Wheel is spinning' : 'Spin wheel'}
+        className="absolute left-1/2 top-1/2 z-20 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--glass-strong)] text-sm font-black text-[var(--ink)] shadow-[var(--shadow-card)] disabled:cursor-not-allowed disabled:opacity-60"
+        disabled={!canSpin}
+        onClick={onSpin}
+        type="button"
+      >
+        {isSpinning ? '...' : 'SPIN'}
+      </button>
     </div>
   )
 }
